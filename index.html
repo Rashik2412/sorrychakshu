@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You | Only</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #050505;
+            --accent: #ff4d6d;
+            --glass: rgba(255, 255, 255, 0.03);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-dark);
+            color: white;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            /* The deep romantic radial background from original */
+            background: radial-gradient(circle at center, #1a0a0d 0%, #050505 100%);
+            min-height: 100vh;
+        }
+
+        /* Falling Hearts */
+        .heart {
+            position: fixed;
+            top: -10%;
+            color: var(--accent);
+            font-size: 20px;
+            z-index: 1000;
+            pointer-events: none;
+            animation: fall linear forwards;
+        }
+
+        @keyframes fall {
+            to { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+        }
+
+        /* Initial Overlay Screen */
+        #overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: 1.2s ease-in-out;
+        }
+
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-style: italic;
+            background: linear-gradient(to right, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 20px;
+        }
+
+        .photo-section { padding: 80px 10%; text-align: center; }
+
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .photo-box {
+            height: 450px;
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: 0.5s;
+        }
+
+        .photo-box img { width: 100%; height: 100%; object-fit: cover; }
+        .photo-box:hover { border-color: var(--accent); transform: scale(1.02); }
+
+        .section-box {
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 50px;
+            background: var(--glass);
+            border-radius: 30px;
+            border-left: 5px solid var(--accent);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn {
+            background: var(--accent);
+            color: white;
+            padding: 18px 45px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            box-shadow: 0 4px 15px rgba(255, 77, 109, 0.3);
+        }
+
+        .btn:hover { box-shadow: 0 0 25px var(--accent); transform: scale(1.05); }
+
+        #secretLetter {
+            display: none;
+            margin-top: 20px;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="overlay">
+        <h2 style="margin-bottom: 25px; font-family: 'Playfair Display'; font-style: italic; color: white;">For the girl who is my fitoor...</h2>
+        <button class="btn" onclick="startExperience()">Unlock Experience</button>
+    </div>
+
+    <audio id="bgMusic" loop>
+        <source src="fitoor.mp3" type="audio/mpeg">
+    </audio>
+
+    <section style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
+        <p style="letter-spacing: 5px; color: var(--accent); font-size: 0.7rem; margin-bottom: 15px;">PARWARDIGARA</p>
+        <h1>I'm paying attention.</h1>
+        <p style="opacity: 0.6; max-width: 450px; line-height: 1.6;">I've been making notes since day one.</p>
+    </section>
+
+    <section class="photo-section">
+        <h2 style="font-family: 'Playfair Display'; font-style: italic; font-size: 2rem;">The Way I See You</h2>
+        <div class="photo-grid">
+            <div class="photo-box"><img src="https://i.ibb.co/Rp7Gv6Pq/Whats-App-Image-2026-02-04-at-21-04-14-1.jpg"></div>
+            <div class="photo-box"><img src="https://i.ibb.co/RT5TwzB1/Whats-App-Image-2026-02-04-at-21-04-14.jpg"></div>
+            <div class="photo-box"><img src="https://i.ibb.co/PGnF10Xc/Whats-App-Image-2026-02-04-at-21-04-13.jpg"></div>
+        </div>
+    </section>
+
+    <div class="section-box">
+        <h3 style="color: var(--accent); font-family: 'Playfair Display'; margin-bottom: 20px; font-size: 1.8rem;">The Discovery Log:</h3>
+        <ul style="list-style: none; line-height: 2.2;">
+            <li>📺 <b>TMKOC:</b> Your ritual. Your happy place.</li>
+            <li>🥘 <b>Rajma Paratha:</b> The legendary combo.</li>
+            <li>🎨 <b>The Artist:</b> Your drawings and singing are magic.</li>
+            <li>😤 <b>The Gussa:</b> Even your 'marne ki dhamki' is cute.</li>
+            <li>💪 <b>Your Drive:</b> Seeing you exercise makes me want to be better.</li>
+        </ul>
+    </div>
+
+    <div id="secretLetter" class="section-box" style="border-left: none; border-top: 4px solid var(--accent); background: rgba(255, 77, 109, 0.08);">
+        <h2 style="font-family: 'Playfair Display'; margin-bottom: 20px; color: var(--accent);">One Last Thing...</h2>
+        <p style="font-size: 1.2rem; line-height: 1.8; font-style: italic;">
+            "I wanted to tell you something in a very cute manner... I don't say this much, but ya, <br>
+            <b style="font-size: 1.4rem; color: #fff; text-decoration: underline var(--accent);">darta hu aap se bhut, even more than my mom!</b> <br><br>
+            
+            The whole day I thought about this, and I've decided: I will love myself from now on. 
+            I am very, very sorry for yesterday. <br><br>
+
+            <span style="color: #fff; font-weight: 500; text-shadow: 0 0 10px rgba(255, 77, 109, 0.5);">
+                I promise I will give my every ounce of energy to make both of us happy.
+            </span> <br><br>
+            
+            Just forgive this little kid and give him another chance? ❤️"
+        </p>
+    </div>
+
+    <footer style="padding: 100px 20px; text-align: center;">
+        <button class="btn" id="revealBtn" onclick="revealSecret()">I have a confession...</button>
+        <p style="opacity: 0.3; margin-top: 40px; font-size: 0.8rem;">Made with ❤️ for You</p>
+    </footer>
+
+    <script>
+        function startExperience() {
+            // Hide overlay
+            const ov = document.getElementById('overlay');
+            ov.style.opacity = '0';
+            setTimeout(() => { ov.style.display = 'none'; }, 1200);
+
+            // Audio with fail-safe
+            const music = document.getElementById('bgMusic');
+            music.play().catch(() => console.log("Audio waiting for interaction or file missing"));
+
+            // Start falling hearts
+            setInterval(createHeart, 400);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            heart.style.opacity = Math.random();
+            document.body.appendChild(heart);
+            setTimeout(() => { heart.remove(); }, 5000);
+        }
+
+        function revealSecret() {
+            const letter = document.getElementById('secretLetter');
+            letter.style.display = 'block';
+            document.getElementById('revealBtn').style.display = 'none';
+            letter.scrollIntoView({ behavior: 'smooth' });
+            
+            // Extra burst of hearts
+            for(let i=0; i<15; i++) {
+                setTimeout(createHeart, i * 150);
+            }
+        }
+    </script>
+</body>
+</html>
+
+        
